@@ -43,4 +43,5 @@ rm nvim-linux-x86_64.tar.gz
 
 echo "Done installing and configuring everything"
 
+sudo apt autoremove
 exit
