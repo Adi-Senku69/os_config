@@ -365,3 +365,10 @@ if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
 
+# alias-finder config
+zstyle ':omz:plugins:alias-finder' autoload yes # disabled by default
+zstyle ':omz:plugins:alias-finder' longer yes # disabled by default
+zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
+# History reverse search config
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
