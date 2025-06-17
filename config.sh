@@ -18,7 +18,8 @@ fc-cache -f -v
 echo "Installing kitty"
 sudo apt install kitty
 rm -rf ~/.config/kitty
-git clone https://github.com/Adi-Senku69/kitty_config.git ~/.config
+mkdir -p ~/.config/kitty
+git clone https://github.com/Adi-Senku69/kitty_config.git ~/.config/kitty
 mkdir -p ~/.local/share/applications/
 mv  ./kitty.desktop ~/.local/share/applications/
 chmod +x ~/.local/share/applications/kitty.desktop

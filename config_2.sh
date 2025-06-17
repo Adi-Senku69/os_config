@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # continue setting up
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
@@ -26,18 +27,21 @@ done
 cp -f .zshrc ~/.zshrc
 
 # Miniconda install
+if [ ! -d "~/miniconda3/" ]; then
 echo "Installing miniconda"
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 mv Miniconda3-latest-Linux-x86_64.sh ~
 bash ~/Miniconda3-latest-Linux-x86_64.sh
 rm ~/Miniconda3-latest-Linux-x86_64.sh
+fi
 
 # Neovim install
 echo "Installing neovim"
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-git clone https://github.com/Adi-Senku69/nvim.git ~/.config --depth 1
+mkdir -p ~/.config/nvim
+git clone https://github.com/Adi-Senku69/nvim.git ~/.config/nvim --depth 1
 
 echo "Done configuring everything"
 
