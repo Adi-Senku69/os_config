@@ -3,8 +3,8 @@
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 PLUGINS=(
-  "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git autoswitch_virtualenv",
-  "https://github.com/zsh-users/zsh-autosuggestions zsh-autosuggestions",
+  "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git autoswitch_virtualenv"
+  "https://github.com/zsh-users/zsh-autosuggestions zsh-autosuggestions"
   "https://github.com/zsh-users/zsh-syntax-highlighting.git zsh-syntax-highlighting"
 )
 
@@ -43,5 +43,5 @@ rm nvim-linux-x86_64.tar.gz
 
 echo "Done installing and configuring everything"
 
-sudo apt autoremove
+sudo apt autoremove -y
 exit
