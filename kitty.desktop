@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=kitty 
+Exec=kitty --start-as maximized
+Type=Application
+StartupWMClass=kitty
+Terminal=false
+Icon=kitty
+Categories=System;TerminalEmulator;
+StartupNotify=true
+
