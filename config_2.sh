@@ -4,11 +4,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 PLUGINS=(
   "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git autoswitch_virtualenv"
-  "https://github.com/gael-ian/zsh-history-substring-search.git history-substring-search"
-  "https://github.com/zsh-users/zsh-autosuggestions.git zsh-autosuggestions"
-  "https://github.com/zsh-users/zsh-syntax-highlighting.git zsh-syntax-highlighting"
-  "https://github.com/supercrabtree/you-should-use.git you-should-use"
-  "https://github.com/juling/reafd-z.git z"  # 'z' cd-history plugin
 )
 
 echo "Cloning plugins..."
@@ -42,6 +37,6 @@ sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 mkdir -p ~/.config/nvim
 git clone https://github.com/Adi-Senku69/nvim.git ~/.config/nvim --depth 1
+rm nvim-linux-x86_64.tar.gz
 
-echo "Done configuring everything"
-
+echo "Done installing and configuring everything"

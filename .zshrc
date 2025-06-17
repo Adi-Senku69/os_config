@@ -80,7 +80,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting you-should-use history-substring-search z autoswitch_virtualenv)
+plugins=(autoswitch_virtualenv zsh-navigation-tools wd cp alias-finder copyfile copypath history-substring-search history)
 
 source $ZSH/oh-my-zsh.sh
 
