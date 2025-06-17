@@ -1,6 +1,12 @@
 #! /bin/bash
+if grep -qi "kali" /etc/os-release; then
+  sudo wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
+  kali=0
+fi
+
 
 sudo apt update 
+
 
 # Prerequisites
 echo "Installing Prerequisites"
@@ -23,12 +29,17 @@ git clone https://github.com/Adi-Senku69/kitty_config.git ~/.config/kitty
 mkdir -p ~/.local/share/applications/
 cp kitty.desktop ~/.local/share/applications/
 chmod +x ~/.local/share/applications/kitty.desktop
+if [ $kali -eq 0 ]; then
 # Set Kitty as an alternative terminal
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
 
 # Set Kitty as the default (auto-selects it if no prompt interaction is desired)
 sudo update-alternatives --set x-terminal-emulator /usr/bin/kitty
 
+else
+  gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
+  gsettings set org.gnome.desktop.default-applications.terminal exec-arg '--start-as maximized'
+fi
 echo "Kitty has been set as the default terminal emulator."
 
 
