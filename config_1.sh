@@ -3,6 +3,10 @@ if grep -qi "kali" /etc/os-release; then
   sudo wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
 fi
 
+if grep -qi "mint" /etc/os-release; then
+  mint=0
+fi
+
 sudo apt update 
 
 
@@ -28,9 +32,14 @@ mkdir -p ~/.local/share/applications/
 cp kitty.desktop ~/.local/share/applications/
 chmod +x ~/.local/share/applications/kitty.desktop
 # Set Kitty as an alternative terminal
+if [ ! $mint -eq 0 ]; then
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
 # Set Kitty as the default (auto-selects it if no prompt interaction is desired)
 sudo update-alternatives --set x-terminal-emulator /usr/bin/kitty
+else
+  gsettings set org.cinnamon.desktop.default-applications.terminal exec '$(which kitty)'
+
+fi
 echo "Kitty has been set as the default terminal emulator."
 
 
