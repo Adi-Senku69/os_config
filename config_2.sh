@@ -40,3 +40,5 @@ git clone https://github.com/Adi-Senku69/nvim.git ~/.config/nvim --depth 1
 rm nvim-linux-x86_64.tar.gz
 
 echo "Done installing and configuring everything"
+
+exit
