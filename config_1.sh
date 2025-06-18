@@ -1,6 +1,7 @@
 #! /bin/bash
 if grep -qi "kali" /etc/os-release; then
   sudo wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
+  mint=1
 fi
 
 if grep -qi "mint" /etc/os-release; then
