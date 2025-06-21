@@ -41,6 +41,17 @@ mkdir -p ~/.config/nvim
 git clone https://github.com/Adi-Senku69/nvim.git ~/.config/nvim --depth 1
 rm nvim-linux-x86_64.tar.gz
 
+# Installing zoxide
+sudo apt install zoxide
+
+# Installing rust
+sudo apt install rustup fd-find fzf jq 7zip
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Installing yazi
+cargo install --locked yazi-fm yazi-cli
+
+
 echo "Done installing and configuring everything"
 
 sudo apt autoremove -y

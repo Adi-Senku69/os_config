@@ -372,3 +372,5 @@ zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
 # History reverse search config
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+eval "$(zoxide init zsh)"
