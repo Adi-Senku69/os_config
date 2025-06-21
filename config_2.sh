@@ -51,6 +51,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Installing yazi
 cargo install --locked yazi-fm yazi-cli
 
+# Setting the aliases for zsh
+cp aliases.zsh ~/.oh-my-zsh/custom/
+
 
 echo "Done installing and configuring everything"
 
