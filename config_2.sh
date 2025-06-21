@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # continue setting up
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+if [[ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/themes/powerlevel10k/}"  ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+fi
+
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 PLUGINS=(
   "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git autoswitch_virtualenv"
@@ -21,41 +24,39 @@ for repo in "${PLUGINS[@]}"; do
     git clone --depth 1 "$url" "$dir"
   fi
 done
+
 cp -f .zshrc ~/.zshrc
 
 # Miniconda install
-if [ ! -d "~/miniconda3/" ]; then
-echo "Installing miniconda"
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-mv Miniconda3-latest-Linux-x86_64.sh ~
-bash ~/Miniconda3-latest-Linux-x86_64.sh
-rm ~/Miniconda3-latest-Linux-x86_64.sh
-fi
+if [[ ! -d "$HOME/miniconda3/" ]]; then
+  echo "Installing miniconda"
+  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  mv Miniconda3-latest-Linux-x86_64.sh ~
+  bash ~/Miniconda3-latest-Linux-x86_64.sh
+  rm ~/Miniconda3-latest-Linux-x86_64.sh
+fi 
 
 # Neovim install
-echo "Installing neovim"
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-mkdir -p ~/.config/nvim
-git clone https://github.com/Adi-Senku69/nvim.git ~/.config/nvim --depth 1
-rm nvim-linux-x86_64.tar.gz
-
-# Installing zoxide
-sudo apt install zoxide
-
-# Installing rust
-sudo apt install rustup fd-find fzf jq 7zip
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+if [[ ! -d "$HOME/.config/nvim/" ]]; then
+  echo "Installing neovim"
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+  sudo rm -rf /opt/nvim
+  sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+  mkdir -p ~/.config/nvim
+  git clone https://github.com/Adi-Senku69/nvim.git ~/.config/nvim --depth 1
+  rm nvim-linux-x86_64.tar.gz
+fi
 
 # Installing yazi
-cargo install --locked yazi-fm yazi-cli
+if ! command -v yazi &>/dev/null; then
+  cargo install --locked yazi-fm yazi-cli
+fi
 
 # Setting the aliases for zsh
-cp aliases.zsh ~/.oh-my-zsh/custom/
+cp -f aliases.zsh ~/.oh-my-zsh/custom/
 
+sudo apt autoremove -y
 
 echo "Done installing and configuring everything"
 
-sudo apt autoremove -y
 exit
