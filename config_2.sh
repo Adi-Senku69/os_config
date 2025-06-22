@@ -49,7 +49,7 @@ fi
 
 # Installing yazi
 if ! command -v yazi &>/dev/null; then
-  cargo install --locked yazi-fm yazi-cli
+  cargo install --locked yazi-fm yazi-cli & 2>/dev/null
 fi
 
 # Setting the aliases for zsh

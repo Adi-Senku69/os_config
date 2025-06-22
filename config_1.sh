@@ -1,17 +1,16 @@
-#! /bin/bash
-if ! command -v nala &>/dev/null; then
-  sudo apt install nala -y
-fi
-
+#!/usr/bin/env bash
 if grep -qi "kali" /etc/os-release; then
-  if ! ls /usr/share/keyrings/ | grep -i "kali-archive-keyring" &>/dev/null; then
     sudo wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
-  fi
-  mint=1
+    sudo apt update
+    mint=1
 fi
 
 if grep -qi "mint" /etc/os-release; then
   mint=0
+fi
+
+if ! command -v nala &>/dev/null; then
+  sudo apt install nala -y
 fi
 
 # Installing rust
@@ -67,8 +66,9 @@ fi
 if ! command -v zsh &>/dev/null; then
   echo "Installing zsh"
   sudo nala install zsh
-  if [ ! -d "${ZSH:-$HOME/.oh-my-zsh}" ]; then
-      echo "Installing oh-my-zsh"
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
-  fi
+fi
+# Installing oh-my-zsh
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh}" ]; then
+  echo "Installing oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 fi
