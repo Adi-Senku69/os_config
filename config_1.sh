@@ -15,7 +15,7 @@ fi
 
 # Installing rust
 if ! command -v rustup &>/dev/null; then
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
 
 # Installing rustup if not present
@@ -70,5 +70,5 @@ fi
 # Installing oh-my-zsh
 if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh}" ]; then
   echo "Installing oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+  0</dev/null sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 fi
