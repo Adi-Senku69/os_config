@@ -57,6 +57,8 @@ cp -f aliases.zsh ~/.oh-my-zsh/custom/
 
 sudo apt autoremove -y
 
+echo 'export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"' >> $HOME/.zshrc
+
 echo "Done installing and configuring everything"
 
 exit
